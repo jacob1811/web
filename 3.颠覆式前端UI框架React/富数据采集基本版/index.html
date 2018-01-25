@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>颠覆式前端用户富数据采集</title>
+    <!-- <link rel="stylesheet" href="./asserts/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./asserts/css/jquery-ui-guide.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        纯html5结合属性的方式
+        结合html5 ，通过属性结合脚本传参
+        不需要html ,直接通过脚本生成组件
+     -->
+    <div class="container">
+        <div class="ui-guide" data-ug-active-step=0>
+            <ul class="ui-guide-step">
+                <li data-ug-active="true">
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-right"></i>
+                            <b>1</b>
+                        </dt>
+                        <dd>
+                            基本数据
+                        </dd>
+                    </dl>
+                    <span class="ui-guide-stepline"></span>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-right"></i>
+                            <b>2</b>
+                        </dt>
+                        <dd>
+                            详细信息
+                        </dd>
+                    </dl>
+                    <span class="ui-guide-stepline"></span>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-right"></i>
+                            <b>3</b>
+                        </dt>
+                        <dd>
+                            证件证明
+                        </dd>
+                    </dl>
+                    <span class="ui-guide-stepline"></span>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-right"></i>
+                            <b>4</b>
+                        </dt>
+                        <dd>
+                            其他图片
+                        </dd>
+                    </dl>
+                    <span class="ui-guide-stepline"></span>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-right"></i>
+                            <b>5</b>
+                        </dt>
+                        <dd>
+                            完成
+                        </dd>
+                    </dl>
+                    <span class="ui-guide-stepline"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="ui-guide-content"> 
+            <ul>
+                <li class="step-1">11</li>
+                <li class="step-2">22 </li>
+                <li class="step-3">33</li>
+                <li class="step-4">44 </li>
+                <li class="step-5">55 </li>
+            </ul>
+        </div>
+        <div class="ui-guide-button">
+            <button data-ug-btype="prew">
+                <i class="icon iconfont icon-left"></i>
+                上一步
+            </button>
+            <button data-ug-btype="next">
+                <i class="icon iconfont icon-right1"></i>
+                下一步
+            </button>
+            <button data-ug-btype="finish">
+                <i class="icon iconfont icon-right"></i>
+                完成
+            </button>
+        </div>
+    </div>
+
+</body>
+<script src="./asserts/js/jquery-2.2.4.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script> -->
+<script src="./asserts/js/jquery-ui-guide.js"></script>
+</html>

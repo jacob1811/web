@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js不同类型</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+<script>
+    var a ={};
+    var b = function(){};
+    var date = new Date();
+    var error = new Error();
+    var arr = [];
+    var reg = /a/g; 
+  console.log(Object.prototype.toString.call(undefined))
+  console.log(Object.prototype.toString.call(null))
+  console.log(Object.prototype.toString.call(date))
+  console.log(Object.prototype.toString.call(error))
+  console.log(Object.prototype.toString.call(arr))
+  console.log(Object.prototype.toString.call(1))
+  console.log(Object.prototype.toString.call("jacob"))
+  console.log(Object.prototype.toString.call(true))
+  console.log(Object.prototype.toString.call(a))
+  console.log(Object.prototype.toString.call(b))
+  console.log(Object.prototype.toString.call(reg))
+  console.log(Object.prototype.toString.call(Math))
+  console.log(Object.prototype.toString.call(JSON))
+  console.log(Object.prototype.toString.call(window))
+  console.log(Object.prototype.toString.call(document))
+  function abc(){
+      console.log(Object.prototype.toString.call(arguments));
+  }
+  abc();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多场景轻量级滚动效果组件</title>
+    <script src="./asserts/js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="./asserts/css/animate.css">
+    <script src="./asserts/js/jqueryDNpage.js"></script>
+    <style type="text/css" lang="">
+        html,
+        body {
+            background: #3d860d;
+        }
+
+        pre {
+            color: #fff;
+        }
+
+        .mypage {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mypage li {
+            font-size: 3rem;
+        }
+
+        b {
+            display: block;
+        }
+
+        a {
+            color: #fff;
+        }
+    </style>
+    <!-- 
+        能做什么
+        ++++++++++++++++++++++++
+        1.响应式布局适应大多数设备(PC ,平板，手机)
+        2.指定装载对象和列表元素（图片，视频，html）
+        3.可自定义模式 （无限循环，动画速度）
+        4.可自定义组件展示与拖拽方式（起始页，水平，垂直）
+        5.充分的回调API（加载，动画前，动画后，上页，下页）
+        6.灵活的导航控制公共方法（上一页，下一页，跳到X页，状态）
+        7.翻页过程禁止页面内部动画渲染
+        8.小体积使用简单，更好的用户体验
+
+        怎么使用
+        ++++++++++++++++++++++++++
+        1.调用
+            $(".mypage").jqueryDNpage();
+        2.配置
+            $(".mypage").jqueryDNpage({
+                selector:"li",//指定翻页单叶子元素对象
+                loop:false;//循环
+                speed:500,//速度
+                startPage:2,//起始页
+                swipeX:false,//是否在X轴方向操作，否Y轴
+                threshold:50,//临界点
+                subAnimation:false//翻页过程中禁止页面内容元素动画渲染
+            })
+        3.回调
+            a.传参
+             var DNpage = $(".mypage").jqueryDNpage({
+                selector:"li",//指定翻页单叶子元素对象
+                onPageLoad:function(res){},//加载
+                onPageBefore:function(res){},//动画前
+                onPageAfter:function(res){},//动画后
+                onPagePrev:function(res){},//上页
+                onPageNext:function(res){}//下页
+            })
+            b.事件
+             DNpage.on("onPageLoad",function(res){});//加载
+             DNpage.on("onPageBefore",function(res){});//动画前
+             DNpage.on("onPageAfter",function(res){});//动画后
+             DNpage.on("onPagePrev",function(res){});//上一页
+             DNpage.on("onPageNext",function(res){});//下一页
+        4.方法
+            var DNpage = $(".mypage").jqueryDNpage();
+
+            NDpage.goPrev();//上一页
+            NDpage.goNext()；//下一页
+            NDpage.goToPage(4);//跳转到4页
+            NDpage.getPage()；//状态
+        -->
+</head>
+
+<body>
+
+    <div id="banner" style="width:100%;height:200px;margin:0;padding:0;">
+        <ul class="mypage">
+            <li style=" background:#0ac2d2;text-align:center;">
+                <b class="animated bounce">第一页</b>
+            </li>
+            <li style=" background:#7bb7fa;text-align:center;">
+                <b class="animated swing">第二页</b>
+            </li>
+            <li style=" background:#60d7a9;text-align:center;">
+                <b class="animated tada">第三页</b>
+            </li>
+            <li style=" background:#fdc162;text-align:center;">
+                <b class="animated bounceIn">第四页</b>
+            </li>
+            <li style=" background:#fd6a62;text-align:center;">
+                <b class="animated bounceInLeft">第五页</b>
+            </li>
+            <li style=" background:#f68dbb;text-align:center;">
+                <b class="animated bounceInUp">第六页</b>
+            </li>
+        </ul>
+        <a href="javascript:DNpage.goPrev();">上一页</a>
+        <a href="javascript:DNpage.goNext();">下一页</a>
+        <a href="javascript:DNpage.gotoPage(4);">跳至 #5页</a>
+        <a href="javascript:go();">当前页码/总码数</a>
+    </div>
+    <script>
+        function go(argument){
+            var _tem = DNpage.getPage();
+            alert("当前索引"+_tem.activeIndex+"总页数"+_tem.sub.length)
+        }
+        var DNpage = $(".mypage").jQueryDNpage({
+            selector: "li",//指定翻页单叶子元素对象
+            loop: true,//循环
+            speed: 500,//速度
+            startPage: 2,//起始页
+            swipeX: true,//是否在X轴方向操作，否Y轴
+            threshold: 50,//临界点
+            subAnimation: false,//翻页过程中禁止页面内容元素动画渲染
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bootstrapValidator实现</title>
+    <link rel="stylesheet" href="./asserts/css/bootstrap.min.css">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #form-pannel{
+            width: 40%;
+            padding:1px solid #bbb;
+            border-radius: 7px;
+            margin: auto;
+            margin-top: 10%;
+        }
+        #form-pannel .form-control ~p{
+            color:#c7254e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="form-pannel" style="margin:200px auto;width:60%;">
+        <form id="html5Form" method="post" class="form-horizontal" action="">
+            <!-- 
+                data-dv-XXXX
+                require = boolean required-message 必填项
+                regex = string regex-message 正则匹配失败
+                email = boolean email-meaasge 邮箱验证失败
+                url = boolean url-message 邮箱验证失败
+                email = boolean 
+             -->
+            <div class="form-group">
+                <label class="col-lg-3 control-label">userName</label>
+                <div class=" col-lg-7">
+                    <input type="text" class="form-control" name="username"
+                    data-dv-required="true"
+                    data-dv-required-message="the username is required and cannot be empty"
+                    data-dv-regex="[a-zA-Z0-9]+$"
+                    data-dv-regex-message = "the username can only consist of alphabetical,number">
+
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="col-lg-3 control-label">Email</label>
+                    <div class=" col-lg-7">
+                        <input  class="form-control" name="email"
+                        autocomplete="off"
+                        data-dv-required="true"
+                        data-dv-required-message="the email is not valid"
+                        data-dv-email="true"
+                        data-dv-email-message= "the input is not valid email address">
+    
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-lg-3 control-label">website</label>
+                        <div class=" col-lg-7">
+                            <input  class="form-control" name="website"
+                            data-dv-required="true"
+                            data-dv-required-message="the website is not valid"
+                            data-dv-uri="true"
+                            data-dv-uri-message = "the input is not valid website address">
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-lg-3 control-label">age</label>
+                        <div class=" col-lg-7">
+                            <input  class="form-control" name="age"
+                            data-dv-required="true"
+                            data-dv-required-message="the age not valid"
+                            data-dv-greaterthan="10"
+                            data-dv-greaterthan-message="the input must be greater than or equal to 10"
+                            data-dv-lessthan="100"
+                            data-dv-lessthan-message="the input must be less than 100"
+                            data-dv-integer="true"
+                            data-dv-integer-message="the input must be integer">
+                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12 text-center">
+                            <input class="btn btn-primary" type="button" value="Regist">
+                            <input class="btn btn-primary" type="submit" value="submit">
+                    </div>
+                    
+                        
+                </div>
+        </form>
+
+    </div>
+
+</body>
+<script src="./asserts/js/jquery-2.2.4.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script> -->
+<script src="./asserts/js/validator.js"></script>
+
+<script>
+    $(function () {
+        //json数据格式
+        // $("#html5Form").validator({
+        //     "user": "/^$/",
+        //     "email": "/^a-A0-9@a-A0-9/",
+        //     "age": "/0-9/"
+        // });
+        //html attribute配置
+        // changge/keyup
+        $("#html5Form").dnValidator({
+            trigger:"keyup"
+        });
+    });
+</script>
+
+</html>

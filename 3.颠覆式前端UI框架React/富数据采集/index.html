@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>颠覆式前端用户富数据采集</title>
+    <!-- <link rel="stylesheet" href="./asserts/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./asserts/css/jquery-ui-guide.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        纯html5结合属性的方式
+        结合html5 ，通过属性结合脚本传参
+        不需要html ,直接通过脚本生成组件
+     -->
+    <div class="container">
+        <div id="my-step">
+            <div data-ug-step="true" data-toggle="ug">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div data-ug-content="true">
+                <ul>
+                    <li>11</li>
+                    <li>22</li>
+                    <li>33</li>
+                    <li>44</li>
+                    <li>55</li>
+                </ul>
+            </div>
+            <div data-ug-button="true"></div>
+        </div>
+    </div>
+
+</body>
+<script src="./asserts/js/jquery-2.2.4.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script> -->
+<script src="./asserts/js/jquery-ui-guide.js"></script>
+<script>
+    $(function () {
+        $("#my-step").uiGuide({
+            stepData: [
+                { serial: "1", text: "基本数据" },
+                { serial: "2", text: "详细数据" },
+                { serial: "3", text: "证件证明" },
+                { serial: "4", text: "其他图片" },
+                { serial: "5", text: "完成" }],
+            activeIndex: 0,
+            // stepTemplate:"<p></p>"
+        }).on("prew",function(event,o){
+            alert(o)
+        }).on("next",function(e,o){
+            alert(o)
+        }).on("finish",function(){
+            alert(123);
+        });
+
+    })
+</script>
+
+</html>

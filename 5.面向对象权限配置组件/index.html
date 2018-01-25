@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象权限配置组件</title>
+    <link rel="stylesheet" href="./asserts/UserRoleSelector/css/UserRoleSelector.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="showSelector"> 配置用户角色</button>
+<script src="./asserts/UserRoleSelector/js/UserRoleSelector.js"></script>
+<script>
+    window.onload=function(){
+        var selector = new UserRoleSelector({
+            show:false,
+            data:[{"value":1,"text":"系统管理人员"},{"value":2,"text":"部门经理"},
+            {"value":3,"text":"部门主管"},{"value":4,"text":"销售经理"},
+            {"value":5,"text":"财务会计"},{"value":6,"text":"财务出纳"}],
+            onSave:function(){
+                alert(this.getValue());
+                this.hide();
+                this.getValue();
+            }
+
+
+        })
+        document.getElementById("showSelector").onclick = function(){
+            selector.show();
+        }
+    }
+</script>
+</body>
+
+</html>

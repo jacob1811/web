@@ -1,0 +1,109 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, "microsoft yahei";
+    background-color: #b1b1b1;
+    user-select: none;
+    overflow: hidden;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.mask{
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:rgba(0,0,0,.5);
+    /* opacity: 0.5;继承 */
+
+}
+.user-role-selector{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -290px;
+    margin-top: -250px;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 50px 20px;
+}
+.user-role-selector {
+    width: 540px;
+    height: 400px;
+   
+}
+
+.user-role-selector .data-list {
+    width: 40%;
+    height: 100%;
+    background-color: #fafafa;
+    border: 1px solid #e5e5e5;
+    float: left;
+}
+
+.user-role-selector .data-list li {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    text-indent: 10px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.user-role-selector .data-list li:hover {
+    background-color: #039ae3;
+    color: #fff;
+}
+
+.user-role-selector .data-list li.selected {
+    background-color: #666;
+    color: #fff;
+}
+
+.user-role-selector .data-oper {
+    float: left;
+    padding: 10px;
+}
+
+.user-role-selector .data-oper .button  {
+    width: 80px;
+    height: 36px;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #d9d9d9;
+    text-align: center;
+    line-height: 36px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f3f3f3;
+    font-size: 14px;
+}
+.user-role-selector .data-bar .button  {
+    width: 80px;
+    height: 24px;
+    display: inline-block;
+    margin: 5px auto;
+    border: 1px solid #d9d9d9;
+    text-align: center;
+    line-height: 24px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f3f3f3;
+    font-size: 14px;
+    float:right;
+}
+
+.user-role-selector .button:hover{
+    background-color: #039ae3;
+    color: #fff;
+} 

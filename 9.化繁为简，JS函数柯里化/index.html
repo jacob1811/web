@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>化繁为简，JS函数柯里化</title>
+</head>
+<body>
+    <script>
+        function square(i){
+            return i*i;
+        }
+        function dobble(i){
+            return i*2;
+        }
+        function map(handeler,list){
+            return list.map(handeler);
+        }
+
+        console.log(map(square,[1,2,3,4,5]))
+        console.log(map(square,[6,7,8,910]))
+
+
+        console.log(map(dobble,[1,2,3,4,5]))
+        console.log(map(dobble,[6,7,8,910]))
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>脏检查升级版0.0.4</title>
+    <script src="./dirty-checking0.0.4.js"></script>
+    <style>
+        button {
+            height: 100px;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button ng-click="increaseSprite"> 增加</button>
+        <button ng-click="decreaseSprite"> 减少 </button>
+        雪碧:
+        <span ng-bind="sprite"></span>
+    </div>
+    <div>
+        <button ng-click="increaseCola"> 增加</button>
+        <button ng-click="decreaseCola"> 减少 </button>
+        可乐:
+        <span ng-bind="cola"></span>
+        <br>
+    </div>
+    合计 =
+    <span ng-bind="sum"></span>
+</body>
+
+</html>

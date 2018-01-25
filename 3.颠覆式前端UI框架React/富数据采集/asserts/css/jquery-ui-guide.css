@@ -1,0 +1,78 @@
+html,ul,li,dd,dl,dt,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+li{
+    list-style-type: none;
+}
+.container{
+    width: 60%;
+    margin: 5% auto;
+    background: #ccc6c6;
+    height: 70%;
+}
+.container .ui-guide{
+    margin: 5% auto;
+    background: #ccc6c6;
+    flex-direction:column;  
+    display: flex;
+    height: 100%;
+}
+.container .ui-guide-button{
+    flex: 1;
+}
+.container .ui-guide-step{
+    flex: 1;
+    background: #e77575;
+   
+}
+.container .ui-guide-content{
+    flex: 8;
+    background: #f0f00a;
+}
+.ui-guide-step ul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.ui-guide-step ul li{
+    background: rgb(74, 182, 64);
+    margin: 0 10px;
+    position: relative;
+    width: 100%;
+}
+.ui-guide .ui-guide-step li[data-ug-active="true"]{
+    display: block;
+    background: #9c4c9c 
+}
+.ui-guide .ui-guide-step li[data-ug-over="true"]{
+    display: block;
+    background: #0343cf 
+}
+.ui-guide-step li dl{
+    width: 100%;
+    position: relative;
+ }
+.ui-guide-step li dl dd{
+   display: block;
+   position: absolute;
+   float: left;
+   top:15px;
+}
+.container .ui-guide-content ul li{
+    display: none;
+}
+.container .ui-guide-content ul li[data-ug-active="true"]{
+    display: block;
+    background: yellow;
+}
+.container .ui-guide-button button[data-ug-btype="finish"]{
+    display: none;
+}
+.container .ui-guide-button button[data-ug-btype="finish"]{
+    display: none;
+}
