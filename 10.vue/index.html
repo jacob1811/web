@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <h2>分割 app-1</h2>
+    <div id="app-1">
+        <p>{{name}}</p>
+        <p>{{job}}</p>
+        <p>{{getNews("morning")}}</p>
+        <p>
+            <a v-bind:href="website">website</a>
+        </p>
+    </div>
+    <h2>分割 app-2</h2>
+    <div id="app-2">
+        <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+        <p>{{news}}</p>
+        <input v-model="news" type="text">
+        <p v-if="seen"> 可见性</p>
+        <ul>
+            <li v-for="item in todos">{{item.text}}</li>
+        </ul>
+        <button v-on:click="reseveNew"> what fuck</button>
+    </div>
+    <h2>分割 app-3</h2>
+    <div id="app-3">
+        <div>
+            <todo-item v-bind:todo ={"text":"你是傻子"}></todo-item>
+            <ul>
+                <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+                </todo-item>
+            </ul>
+        </div>
+    </div>
+    <div></div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
