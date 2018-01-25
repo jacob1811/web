@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数记忆</title>
+</head>
+
+<body>
+    <script src="./DN.js"></script>
+    <script>
+        // function memorize(f) {
+        //     //  存储缓存
+        //     var cache = {};
+        //     //传递给 memorize 方法的参数，要传到add 方法中来，接受参数，然后给传递到add中去
+        //     return function () {
+        //         console.log(JSON.stringify(cache))
+
+        //         //  key作为缓存的键值 ，结果“1，2” arguments类数组没有原型链上的方法
+        //         // arguments[] 遍历，判断，toString() 判断类型
+
+        //         // key = Array.prototype.join.call(arguments, ",");
+        //         //cache ==>{"[object Object]":1}
+
+        //         var key = JSON.stringify(Array.prototype.slice.call(arguments));
+        //         if (key in cache) {
+        //             return cache[key];
+        //         } else {
+        //             return cache[key] = f.apply(this, arguments);
+        //         }
+        //     }
+
+        // }
+
+        // var propValue = function (obj) {
+        //     return obj.value
+        // }
+        // function add(a, b) {
+        //     return a + b;
+        // }
+        // var memorizedAdd = memorize(add);
+        // var memorize1 = memorize(propValue);
+        // // {value:1} 这样形式的arguments ===》[object object] key一样
+        // console.log(memorize1({ value: 1 }));//{"[object Object]":1}
+        // console.log(memorize1({ value: 2 }));//{"[object Object]":1}
+        // console.log(memorizedAdd(1, 2));//得到3
+        // console.log(memorizedAdd(1, 2));//不通过计算得到3
+        //=================================================================进阶1
+
+        //    hasher 替代 JSON.stringify(Array.prototype.slice.call(arguments )
+        // var memorize = function (f, hasher) {
+        //     //  存储缓存
+        //     var memoize = function (name) {
+        //         var cache = memoize.cache;
+        //         //    转化成字符串
+        //         var key = "" + (hasher ? hasher.apply(this, arguments) : name);
+        //         if (!cache[key]) {
+        //             cache[key] = f.apply(this, arguments);
+        //         }
+        //         return cache[key];
+        //     }
+        //     memoize.cache = {};
+        //     return memoize;
+        // }
+
+        // var propValue = function (obj) {
+        //     return obj.value
+        // }
+        function add(a, b) {
+            return a + b;
+        }
+
+        var memorizedAdd = DN.memorize(add, function () {
+            var args = Array.prototype.slice.call(arguments);
+            return JSON.stringify(args)
+        });
+
+        // console.log(memorizedAdd(1, 2));//得到3
+        // console.log(memorizedAdd(1, 2));//不通过计算得到3
+
+        // console.time("使用了记忆方法");
+        // for (var i = 0; i < 10000; i++) {
+        //     memorizedAdd(1, 2);
+        // }
+        // console.timeEnd("使用了记忆方法")
+
+        // console.time("原生调用");
+        // for (var i = 0; i < 10000; i++) {
+        //     add(1, 2);
+        // }
+        // console.timeEnd("原生调用")
+        // //  使用了记忆方法: 28.43505859375ms
+        // //  原生调用: 0.72509765625ms
+        // //一对兔子每个月能生一对小兔子，小兔子三个月开始省下一代小兔子，不考虑自然死亡，N个月后多少对兔子
+        var count =0;
+        var fibonacci = function (n) {
+            count++;
+            return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2)
+        }
+        // console.log(fibonacci(10))//55
+        // console.log(count)//177
+
+        var fibonacci = $.memorize(fibonacci);
+        fibonacci(10);
+        console.log(count)
+
+        //=========================================》进阶2
+        // 一遍执行，缓存3个参数
+        // var fibonacci = (function(n){
+        //     var memory = {};
+        //     if(n==0||n==1){
+        //         return n
+        //     }
+        //     if(memory[n-2]===undefined){
+        //         memory[n-2] = fibonacci(n-2)
+        //     }
+        //     if(memory[n-1]===undefined){
+        //         memery[n-1]=fibonacci(n-1)
+        //     }
+        //     return memory[n] = memery[n-1]+memery[n-2]
+        // })()
+        
+    </script>
+
+</body>
+
+</html>
