@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        Function.prototype.method = function (name, fun) {
+            if (!this.prototype[name]) {
+                this.prototype[name] = fun;
+                return this;
+            }
+        }
+        //查找 '&'开头和 ';'结束的字符串，如果这些字符串可以在实体化中找到，就替换值
+
+        String.method("deentityify", function () {
+            var entity = {
+                quot: '""',
+                lt: '<',
+                gt: '>'
+            }
+            return function () {
+                return this.replace(/&([^&;]+);/g,
+                    function (a, b) {
+                        var r = entity[b];
+                        return typeof r === "string" ? r : a;
+                    }
+                )
+            }
+        }())
+        var str = "&lt;&quot;&dsf'&gt;"
+        console.log(str.deentityify())//  <">
+// stringObject.replace(regexp,replacement)
+//每个匹配都调用该函数，它返回的字符串将作为替换文本使用
+//该函数的第一个参数是匹配模式的字符串。
+//接下来的参数是与模式中的子表达式匹配的字符串，
+//可以有 0 个或多个这样的参数。接下来的参数是一个整数，
+//声明了匹配在 stringObject 中出现的位置。最后一个参数是 stringObject 本身。
+        //构造一个用来生产序列号的对象
+        var serial_maker = function(){
+            var prefix = '';
+            var seq = 0;
+            return {
+                set_prefix:function(p){
+                    prefix = String(p);
+                },
+                set_seq:function(s){
+                    seq = s;
+                },
+                gensym:function(){
+                    var result = prefix + seq;
+                    seq+=1;
+                    return result;
+                }
+            }
+        }
+        var seqer = serial_maker();
+        seqer.set_prefix("Q");
+        seqer.set_seq(1000);
+        var unique = seqer.gensym();   
+    </script>
+</body>
+
+</html>
