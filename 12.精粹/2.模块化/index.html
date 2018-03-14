@@ -47,6 +47,8 @@
 //接下来的参数是与模式中的子表达式匹配的字符串，
 //可以有 0 个或多个这样的参数。接下来的参数是一个整数，
 //声明了匹配在 stringObject 中出现的位置。最后一个参数是 stringObject 本身。
+      
+      
         //构造一个用来生产序列号的对象
         var serial_maker = function(){
             var prefix = '';
@@ -68,7 +70,7 @@
         var seqer = serial_maker();
         seqer.set_prefix("Q");
         seqer.set_seq(1000);
-        var unique = seqer.gensym();   
+        var unique = seqer.gensym();   //Q1000
     </script>
 </body>
 
