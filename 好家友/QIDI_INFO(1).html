@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>校知道_同步助学</title>
+    <style type="text/css" media="screen">
+        html,
+        body,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Ubuntu, arial, verdana;
+            background: #14ae68;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        html {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+
+        .loading {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.3;
+            opacity: 0.3;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1000;
+        }
+
+        .topImg {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+
+        .showCon {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .listCardCon {
+            width: 80%;
+            min-height: 300px;
+            background: #fff;
+            position: relative;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+        }
+
+        header h3 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header span {
+            padding: 10px;
+            color: #545151;
+        }
+
+        .listCardCon header i {
+            color: #14ae68;
+        }
+
+        .headImg {
+            width: 25%;
+            margin: 0 auto;
+        }
+
+        .imgClick svg .imgSvg {
+            fill: #13AE67;
+            /*fill: #C9CACA;*/
+        }
+
+        .List .info {
+            display: none;
+        }
+        /*文字效果*/
+
+        .press {
+            padding-bottom: 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            color: transparent;
+            background-color: black;
+            text-shadow: rgba(154, 130, 130, 0.5) 0 5px 6px, rgba(255, 255, 255, 0.2) 1px 3px 3px;
+            -webkit-background-clip: text;
+        }
+
+        .pressErr {
+            margin-top: 30px;
+            color: #fcfbf7;
+            background-color: #aaa;
+            text-shadow: rgba(72, 64, 64, 0.5) 0 5px 6px, rgba(255, 255, 255, 0.2) 1px 3px 3px;
+        }
+
+        .waitInfo {
+            font-size: 12px;
+            color: #fff;
+            width: 100%;
+            margin-top: 100px;
+            position: absolute;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="loading">
+            <svg class='topImg' width="135" height="140" viewBox="0 0 135 140" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                <rect y="10" width="15" height="120" rx="6">
+                    <animate attributeName="height" begin="0.5s" dur="1s" values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear" repeatCount="indefinite"
+                    />
+                    <animate attributeName="y" begin="0.5s" dur="1s" values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear" repeatCount="indefinite"
+                    />
+                </rect>
+                <rect x="30" y="10" width="15" height="120" rx="6">
+                    <animate attributeName="height" begin="0.25s" dur="1s" values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear" repeatCount="indefinite"
+                    />
+                    <animate attributeName="y" begin="0.25s" dur="1s" values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear" repeatCount="indefinite"
+                    />
+                </rect>
+                <rect x="60" width="15" height="140" rx="6">
+                    <animate attributeName="height" begin="0s" dur="1s" values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear" repeatCount="indefinite"
+                    />
+                    <animate attributeName="y" begin="0s" dur="1s" values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear" repeatCount="indefinite"
+                    />
+                </rect>
+                <rect x="90" y="10" width="15" height="120" rx="6">
+                    <animate attributeName="height" begin="0.25s" dur="1s" values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear" repeatCount="indefinite"
+                    />
+                    <animate attributeName="y" begin="0.25s" dur="1s" values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear" repeatCount="indefinite"
+                    />
+                </rect>
+                <rect x="120" y="10" width="15" height="120" rx="6">
+                    <animate attributeName="height" begin="0.5s" dur="1s" values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear" repeatCount="indefinite"
+                    />
+                    <animate attributeName="y" begin="0.5s" dur="1s" values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear" repeatCount="indefinite"
+                    />
+                </rect>
+            </svg>
+        </div>
+        <div class="showCon">
+            <div class="listCardCon topImg">
+                <header>
+                    <h3><i>·····</i> <span>请选择您的账号</span> <i>·····</i></h3>
+                </header>
+                <ul class="showInfo">
+                </ul>
+                <p class='waitInfo'>正在加载应用，请耐心等候.......</p>
+            </div>
+        </div>
+    </body>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        //=================================================获取url参数 by chu
+        function getQueryString(name) {
+            let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            let r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+            } else {
+                return null;
+            }
+        }
+        //================================================= 启迪套餐 by chu
+        function Conversion(n) {
+            switch (n) {
+                case 'CPP_HJY_TBZX_E00_201709_01':
+                    n = 1;
+                    break;
+                case 'CPP_HJY_TBZX_M10_201709_01':
+                    n = 3;
+                    break;
+                case 'CPP_QD_XZT_E00_FREE':
+                    n = 0;
+                    break;
+                default:
+                    n = 0;
+            }
+            return n;
+        }
+        //================================================= 请求成功 by chu
+        function goLogin(res) {
+            // 测试数据
+            // var res = {
+            //     "error": "",
+            //     "data": {
+            //         "students": [{ "orgId": "604830", "classId": "850516940492714452753641191", "stuId": "b25ecf56-6743-4a1c-b025-b5bc8e8ee4ed", "chargeCode": "CPP_HJY_TBZX_E00_201709_01", "className": "开发者班1", "stuName": "好家友测试孩子01", "orgName": "**启迪信息技术有限公司" },
+            //         // { "orgId": "604830", "classId": "850516940492714452753641191", "stuId": "b25ecf56-6743-4a1c-b025-b5bc8e8ee4ed", "chargeCode": "CPP_HJY_TBZX_E00_201709_01", "className": "开发者班1", "stuName": "好家友测试孩子01", "orgName": "**启迪信息技术有限公司" }
+            //         ],
+            //         "userId": "a56ff174-a1d5-4b6a-943f-fc720c7c5d94",
+            //         "userName": "好家友测试家长"
+            //     },
+            //     "state": 1
+            // }
+            if (res.state == '1') {
+                if (res.data.students.length >= 1) {
+                    $(".waitInfo").hide();
+                    var showHtml = "";
+                    for (var i = 0; i < res.data.students.length; i++) {
+                        showHtml +=
+                            "<li class='List'>" +
+                            "<div class='headImg'>" +
+                            "<?xml version='1.0' encoding='utf-8'?>" +
+                            "<svg version='1.1' id='图层_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 104 104' enable-background='new 0 0 104 104' xml:space='preserve'>" +
+                            "<g>" +
+                            "<path class='imgSvg' fill='#C9CACA'" +
+                            "d='M0,52c0,18.6,9.9,35.7,26,45c16.1,9.3,35.9,9.3,52,0c16.1-9.3,26-26.5,26-45c0-28.7-23.3-52-52-52" +
+                            "S0,23.3,0,52L0,52z M0,52' />" +
+                            "<path fill='#FFFFFF' " +
+                            "d='M83.2,84.5c-2.8-7.1-10.1-15-19.4-18.9c6.5-3.9,10.9-11,10.9-19.2c0-12.4-10.2-22.7-22.7-22.7" +
+                            "S29.5,33.7,29.5,46.2c0,8.2,4.4,15.3,10.9,19.2c-9.5,3.9-16.7,12-19.5,19.2C35,100.4,68.1,100.4,83.2,84.5L83.2,84.5z M83.2,84.5' />" +
+                            "</g>" +
+                            "</svg>" +
+                            "</div>" +
+                            "<p class='press'>" + res.data.students[i].stuName + "</p>" +
+                            "<span class='info'>" + res.data.students[i].stuId + "</span>" +
+                            "<i class='info'>" + res.data.students[i].chargeCode + "</i>" +
+                            "<e class='info'>" + res.data.students[i].stuName + "</e>" +
+                            "</li>"
+                    }
+                    $('.loading').hide();
+                    $('.showInfo').empty();
+                    $('.showInfo').append(showHtml);
+                    if (res.data.students.length == 1) {
+                        $('.List').addClass('imgClick');
+                        setTimeout(function () {
+                            $('.loading').show();
+                            $(".waitInfo").show();
+                            var vipStatus = Conversion(res.data.students[0].chargeCode);
+                            window.location = "http://school.zmk12.com/?id=" + res.data.students[0].stuId + "&channel=QIDI_INFO&vipStatus=" + vipStatus + "&userName=" + res.data.students[0].stuName;
+                            // window.location = "http://ionictest.zmk12.com/?id=" + res.data.students[0].stuId + "&channel=QIDI_INFO&vipStatus=" + vipStatus;
+                        }, 1000)
+                    }
+                }
+            } else {
+                var showHtml = '';
+                showHtml =
+                    "<li>" +
+                    "<div class='headImg'>" +
+                    "<?xml version='1.0' encoding='utf-8'?>" +
+                    "<svg version='1.1' id='图层_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 150 150' enable-background='new 0 0 150 150' xml:space='preserve'>" +
+                    "<g><g>" +
+                    "<path fill='#FFFFFF'" +
+                    "d='M49.1,78.5c-3.5,0-6.3-2.8-6.3-6.3v-1.3c0-3.5,2.8-6.3,6.3-6.3c3.5,0,6.3,2.8,6.3,6.3v1.3" +
+                    "C55.4,75.7,52.6,78.5,49.1,78.5L49.1,78.5z M99.3,78.5c-3.5,0-6.3-2.8-6.3-6.3v-1.3c0-3.5," +
+                    "2.8-6.3,6.3-6.3c3.5,0,6.3,2.8,6.3,6.3" +
+                    "v1.3C105.7,75.7,102.8,78.5,99.3,78.5L99.3,78.5z M75," +
+                    "150c-41.4,0-75-33.6-75-75C0,33.6,33.6,0,75,0c41.4,0,75,33.6,75,75" +
+                    "C150,116.4,116.4,150,75,150L75,150z M75,6.3C37.1,6.3,6.2,37.1,6.2,75c0," +
+                    "37.9,30.8,68.7,68.7,68.7c37.9,0,68.8-30.8,68.8-68.7" +
+                    "C143.7,37.1,112.9,6.3,75,6.3L75,6.3z M38.7,61.8c-2.1,0-4.1-0.4-5.9-1.4c-1.5-0.8-2.1-2.7-1.3-4.2c0.8-1.5,2.7-2.1,4.2-1.3" +
+                    "c3.1,1.6,7.8,0.4,11.3-3c3.3-3.2,4.7-7.6,3.5-10.8c-0.6-1.6,0.2-3.4,1.8-4c1.6-0.6,3.4,0.2,4,1.8c2.1,5.5,0.2,12.6-4.9,17.5" +
+                    "C47.6,59.9,43,61.8,38.7,61.8L38.7,61.8z M111.1,61.8c-4.3,0-9-1.9-12.6-5.4c-5.1-4.9-7.1-12-4.9-17.5c0.6-1.6,2.5-2.4,4-1.8" +
+                    "c1.6,0.6,2.4,2.4,1.8,4c-1.2,3.2,0.2,7.6,3.4,10.8c3.4,3.3,8.2,4.6,11.3,3c1.5-0.8,3.4-0.2,4.2,1.3c0.8,1.5,0.2,3.4-1.3,4.2" +
+                    "C115.3,61.3,113.2,61.8,111.1,61.8L111.1,61.8z M75,119.4c-4.8,0-9.4-2.6-11.8-6.9c-0.9-1.5-0.3-3.4,1.2-4.3" +
+                    "c1.5-0.9,3.4-0.3,4.3,1.2c1.3,2.3,3.8,3.7,6.4,3.7c2.6,0,5-1.4,6.3-3.7c0.9-1.5,2.8-2,4.3-1.1c1.5,0.9,2,2.8,1.1,4.3" +
+                    "C84.4,116.7,79.9,119.4,75,119.4L75,119.4z M54.1,119.4c-4.8,0-9.3-2.6-11.8-6.9c-0.9-1.5-0.3-3.4,1.2-4.3" +
+                    "c1.5-0.9,3.4-0.3,4.3,1.2c1.3,2.3,3.8,3.7,6.4,3.7c2.6,0,5-1.4,6.4-3.7c0.9-1.5,2.8-2,4.3-1.1c1.5,0.9,2,2.8,1.1,4.3" +
+                    "C63.4,116.7,58.9,119.4,54.1,119.4L54.1,119.4z M96,119.4c-4.8,0-9.3-2.6-11.8-6.9c-0.9-1.5-0.3-3.4,1.2-4.3" +
+                    "c1.5-0.9,3.4-0.3,4.3,1.2c1.3,2.3,3.7,3.7,6.4,3.7c2.6,0,5-1.4,6.3-3.7c0.9-1.5,2.8-2,4.3-1.1c1.5,0.9,2,2.8,1.1,4.3" +
+                    "C105.3,116.7,100.8,119.4,96,119.4L96,119.4z M96,119.4'/>" +
+                    "</g></g>" +
+                    "</svg>" +
+                    "</div>" +
+                    "<p class='press pressErr'>" + res.error + "</p>" +
+                    "</li>"
+                $('.loading').hide();
+                $('.listCardCon').css("background", "#13AE67")
+                $('.listCardCon').empty();
+                $('.listCardCon').append(showHtml);
+            }
+        }
+        //================================================= 开始请求数据 by chu
+        // var param = {
+        //     token: getQueryString('token'),
+        //     code: getQueryString('code')
+        // }
+        var param = {
+            token: getQueryString('token'),
+            funCode: getQueryString('funCode'),
+            cpCode: "tbzx",
+            channel:"QIDI_INFO"
+        }
+        // var url =  "http://dev.xiao-zhidao.com/api2/getAccessUser";
+        var url =  "https://api.zmk12.com/user_third_party/third_party_authentication.php"
+        $.ajax({
+            url: url,
+            data: param,
+            type: "POST",
+            dataType: 'json',
+            success: goLogin,
+            error: function (er) {
+                alert("对不起，链接失败！");
+            }
+        });
+        //================================================= 点击登陆 by chu
+        $(document).on('click', ".List", function () {
+            if ($(this).find("span").text()) {
+                $('.List').not(this).removeClass('imgClick');
+                $(this).addClass('imgClick');
+                $(".waitInfo").show();
+                $('.loading').show();
+                var vipStatus = Conversion($(this).find("i").text());
+                window.location = "http://school.zmk12.com/?id=" + $(this).find("span").text() +
+                    "&channel=QIDI_INFO&vipStatus=" + vipStatus + "&userName=" + $(this).find("e").text();
+                // window.location = "http://ionictest.zmk12.com/?id=" + $(this).find("span").text() +
+                //     "&channel=QIDI_INFO&vipStatus=" + vipStatus + "&userName=" + $(this).find("e").text();
+
+            } else {
+                alert("对不起，账号错误！");
+            }
+
+        })
+    </script>
+</body>
+
+</html>
